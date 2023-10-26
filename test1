@@ -1,0 +1,194 @@
+Java
+A. Shuffle an Array
+To shuffle an array without relying on built-in methods, you can implement a custom shuffling algorithm. Here's an example using the Fisher-Yates shuffle algorithm:
+import java.util.Random;
+
+public class ArrayShuffler {
+    public static void main(String[] args) {
+        int[] array = {1, 2, 3, 4, 5, 6, 7};
+        shuffleArray(array);
+        for (int value : array) {
+            System.out.print(value + " ");
+        }
+    }
+
+    public static void shuffleArray(int[] array) {
+        Random random = new Random();
+        for (int i = array.length - 1; i > 0; i--) {
+            int j = random.nextInt(i + 1);
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+    }
+}
+
+B. Roman to Integer Conversion
+To convert a Roman numeral to an integer, you can create a function. Here's an example:
+public class RomanToInteger {
+    public static void main(String[] args) {
+        String romanNumeral = "IX";
+        int result = romanToInteger(romanNumeral);
+        System.out.println(result);
+    }
+
+    public static int romanToInteger(String s) {
+        // Create a mapping of Roman numerals to their integer values
+        Map<Character, Integer> romanMap = new HashMap<>();
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int result = 0;
+        int prevValue = 0;
+
+        for (int i = s.length() - 1; i >= 0; i--) {
+            int currValue = romanMap.get(s.charAt(i));
+
+            if (currValue < prevValue) {
+                result -= currValue;
+            } else {
+                result += currValue;
+            }
+
+            prevValue = currValue;
+        }
+
+        return result;
+    }
+}
+C. Check for Pangram
+To check if an input is a pangram, you can create a function to verify if it contains all letters from a to z. Here's an example:
+public class PangramChecker {
+    public static void main(String[] args) {
+        String input = "The quick brown fox jumps over the lazy dog";
+        boolean isPangram = isPangram(input);
+        System.out.println(isPangram ? "It's a pangram" : "It's not a pangram");
+    }
+
+    public static boolean isPangram(String s) {
+        // Convert the input string to lowercase
+        s = s.toLowerCase();
+
+        // Create a set to keep track of letters in the input
+        Set<Character> letters = new HashSet<>();
+
+        for (char c : s.toCharArray()) {
+            if (c >= 'a' && c <= 'z') {
+                letters.add(c);
+            }
+        }
+
+        // Check if the set contains all 26 letters
+        return letters.size() == 26;
+    }
+}
+JavaScript
+A. Reverse Words in a Sentence
+To reverse every word in a sentence in JavaScript, you can split the sentence into words, reverse each word, and then join them back together. Here's an example:
+function reverseWords(sentence) {
+    const words = sentence.split(' ');
+    const reversedWords = words.map(word => {
+        return word.split('').reverse().join('');
+    });
+    return reversedWords.join(' ');
+}
+
+const inputSentence = "This is a sunny day";
+const reversedSentence = reverseWords(inputSentence);
+console.log(reversedSentence); // Output: "sihT si a ynnus yad"
+
+B. Sort an Array in Descending Order
+To sort an array in descending order in JavaScript, you can use a custom sorting function with the sort method. Here's an example:
+function sortDescending(arr) {
+    return arr.sort((a, b) => b - a);
+}
+
+const inputArray = [5, 2, 9, 1, 7];
+const sortedArray = sortDescending(inputArray);
+console.log(sortedArray); // Output: [9, 7, 5, 2, 1]
+
+HTML
+A. Create a Basic Calculator
+To create a basic calculator using HTML, CSS, and JavaScript, you can follow this simple example:
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        /* Add your CSS styling here */
+    </style>
+</head>
+<body>
+    <input type="text" id="display" readonly>
+    <div>
+        <button onclick="clearDisplay()">C</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <!-- Add more buttons for digits and operators -->
+        <button onclick="calculate()">=</button>
+    </div>
+
+    <script>
+        let display = document.getElementById("display");
+
+        function appendToDisplay(value) {
+            display.value += value;
+        }
+
+        function clearDisplay() {
+            display.value = "";
+        }
+
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
+
+This is a basic calculator with the functionality of addition, subtraction, multiplication, and division.
+
+B. Create a Survey Form
+To create a survey form with HTML, you can use the following as a starting point:
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Survey Form</title>
+</head>
+<body>
+    <form id="surveyForm">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required><br><br>
+        
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required><br><br>
+        
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required><br><br>
+        
+        <label for="country">Country:</label>
+        <select id="country" required>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <!-- Add more options for countries -->
+        </select><br><br>
+        
+        <label>Gender:</label>
+        <input type="checkbox" name="gender" value="male"> Male
+        <input type="checkbox" name="gender" value="female"> Female
+        <!-- Add more gender options -->
+        <br><br>
+        
+        <label for="profession">Profession:</label>
+        <input type="text" id="profession" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br><br
+
